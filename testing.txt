@@ -1,0 +1,36 @@
+Testing.
+
+1) Make sure your JIRA behaves badly in a predictable way.
+
+Turn off user scripts.
+
+In a Scrum project, go to plan view and click some backlog items. See the detail view appear. (Maybe you have to click the actual ticket ID where it actually looks like a hyperlink to do this; maybe on your JIRA instance it happens when you click anywhere in the ticket)
+Go to work view and try the same. You are looking for a reliable way to make the plan view pop up.
+
+2) Enable user scripts and reload JIRA.
+
+Observe that the hide-detailed-view checkbox appeared.
+
+3) Plan view simple test.
+
+In plan view, click an item to get detail view up.
+Hit T to hide detail view again.
+Click a second item to get detail view up.
+Check the hide-detailed-view checkbox and verify the detail view goes away.
+Click the first item to attempt to get the detail view up and verify that it does not appear.
+Hit T and verify the detail view does not appear.
+Clear the hide-detailed-view checkbox and click an item and verify the detail view appears.
+Check the hide-detailed-view checkbox and verify the detail view goes away.
+Clear the hide-detailed-view checkbox, hit T and verify the detail view appears.
+
+4) Work view simple test.
+
+As (3) but in work view.
+
+5) Cross-view test - plan to simple
+
+Check the box in plan view and verify its behavior works in plan view and in work view.
+Clear the box in plan view and verify its behavior is disabled in plan view and work view.
+Check the box in work view and verify its behavior works in work view and plan view.
+Clear the box in work view and verify its behavior is disabled in work view and plan view.
+Check the box in plan view, verify it works, clear it inthe work view, verify it is disabled.
