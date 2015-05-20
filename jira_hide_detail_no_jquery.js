@@ -1,12 +1,13 @@
 // ==UserScript==
 // @name         JIRA Hide Detail No jQuery
-// @namespace    http://your.homepage/
+// @namespace    https://github.com/sweavo/jiraMonkey
 // @version      0.1
-// @description  enter something useful
-// @author       You
+// @description  Further to https://jira.atlassian.com/browse/GHS-11160 install a checkbox to keep detail view hidden
+// @author       sweavo@gmail.com
 // @include      /^https?:\/\/yokczc3195gggd[^:/]*:8081\/secure\/RapidBoard.jspa\?rapidView=1/
 // @grant        none
 // ==/UserScript==
+//
 // Notes: this script is probably only compatible with Chrome, the only browser I've tried it in.
 //
 // To install: open tamperMonkey dashboard, create a new script, paste this whole file over the whole edit buffer.

@@ -1,13 +1,14 @@
 // ==UserScript==
 // @name         JIRA Hide Detail
-// @namespace    http://your.homepage/
+// @namespace    https://github.com/sweavo/jiraMonkey
 // @version      0.1
-// @description  enter something useful
-// @author       You
+// @description  Further to https://jira.atlassian.com/browse/GHS-11160 install a checkbox to keep detail view hidden.
+// @author       sweavo@gmail.com
 // @include      /^https?:\/\/yokczc3195gggd[^:/]*:8081\/secure\/RapidBoard.jspa\?rapidView=1/
 // @grant        none
 // @require http://code.jquery.com/jquery-latest.js
 // ==/UserScript==
+//
 // Install: open tamperMonkey or greaseMonkey, paste this as a new user script.
 // I've only tried it in tamperMonkey(chrome) so YMMV in greaseMonkey/Firefox.
 // I don't expect IE to support it, but let me know if it works or nearly so!
