@@ -13,24 +13,34 @@ Observe that the hide-detailed-view checkbox appeared.
 
 3) Plan view simple test.
 
-In plan view, click an item to get detail view up.
-Hit T to hide detail view again.
-Click a second item to get detail view up.
-Check the hide-detailed-view checkbox and verify the detail view goes away.
-Click the first item to attempt to get the detail view up and verify that it does not appear.
-Hit T and verify the detail view does not appear.
-Clear the hide-detailed-view checkbox and click an item and verify the detail view appears.
-Check the hide-detailed-view checkbox and verify the detail view goes away.
-Clear the hide-detailed-view checkbox, hit T and verify the detail view appears.
+3.1 In plan view, click an item to get detail view up.
+3.2 Hit T to hide detail view again.
+3.3 Click a second item to get detail view up.
+3.4 Check the hide-detailed-view checkbox and verify the detail view goes away.
+3.5 Click the first item to attempt to get the detail view up and verify that it does not appear.
+3.6 Hit T and verify the detail view does not appear.
+3.7 Clear the hide-detailed-view checkbox and click an item and verify the detail view appears.
+3.8 Check the hide-detailed-view checkbox and verify the detail view goes away.
+3.9 Clear the hide-detailed-view checkbox, hit T and verify the detail view appears. FAIL looks like checkbox swallows keyboard event
 
 4) Work view simple test.
 
 As (3) but in work view.
 
+4.1 In work view, click an item to get detail view up.
+4.2 Hit T to hide detail view again.
+4.3 Click a second item to get detail view up.
+4.4 Check the hide-detailed-view checkbox and verify the detail view goes away. FAIL
+t4.5 Click the first item to attempt to get the detail view up and verify that it does not appear. FAIL
+4.6 Hit T and verify the detail view does not appear. FAIL
+4.7 Clear the hide-detailed-view checkbox and click an item and verify the detail view appears.
+4.8 Check the hide-detailed-view checkbox and verify the detail view goes away. FAIL
+4.9 Clear the hide-detailed-view checkbox, hit T and verify the detail view appears. FAIL looks like checkbox swallows keyboard event
+
 5) Cross-view test - plan to simple
 
-Check the box in plan view and verify its behavior works in plan view and in work view.
-Clear the box in plan view and verify its behavior is disabled in plan view and work view.
-Check the box in work view and verify its behavior works in work view and plan view.
-Clear the box in work view and verify its behavior is disabled in work view and plan view.
-Check the box in plan view, verify it works, clear it inthe work view, verify it is disabled.
+5.1 Check the box in plan view and verify its behavior works in plan view and in work view. FAIL
+5.2 Clear the box in plan view and verify its behavior is disabled in plan view and work view. FAIL
+5.3 Check the box in work view and verify its behavior works in work view and plan view. FAIL
+5.4 Clear the box in work view and verify its behavior is disabled in work view and plan view. FAIL
+5.5 Check the box in plan view, verify it works, clear it inthe work view, verify it is disabled. FAIL
