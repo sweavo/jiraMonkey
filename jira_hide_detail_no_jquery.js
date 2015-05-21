@@ -4,10 +4,13 @@
 // @version      0.2
 // @description  Further to https://jira.atlassian.com/browse/GHS-11160 install a checkbox to keep detail view hidden
 // @author       sweavo@gmail.com
-// @include      /^https?:\/\/[^:/]*[:8081]?\/secure\/RapidBoard.jspa\?rapidView*/
+// @include      /^https?:\/\/[^/]*\/secure\/RapidBoard.jspa\?rapidView/
 // @grant        none
 // ==/UserScript==
-// https://jira.atlassian.com/browse/GHS-11160
+// Notes: this script is probably only compatible with Chrome, the only browser I've tried it in.
+//
+// To install: open tamperMonkey dashboard, create a new script, paste this whole file over the whole edit buffer.
+
 
 function remove_detail_view()
 {
