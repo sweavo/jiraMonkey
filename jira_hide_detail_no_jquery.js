@@ -16,6 +16,7 @@ function remove_detail_view()
 {
     GH.PlanController.setDetailViewOpenedState(false);
     GH.WorkController.setDetailViewOpenedState(false);
+    GH.PlanView.updateHorizontalPositioning();
 }
 
 function schedule_remove_detail_view(ms)
