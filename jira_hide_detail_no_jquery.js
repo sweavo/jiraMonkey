@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         JIRA Hide Detail No jQuery
 // @namespace    https://github.com/sweavo/jiraMonkey
-// @version      0.2
+// @version      0.3
 // @description  Further to https://jira.atlassian.com/browse/GHS-11160 install a checkbox to keep detail view hidden
 // @author       sweavo@gmail.com
 // @include      /^https?:\/\/[^/]*\/secure\/RapidBoard.jspa\?rapidView/
@@ -77,12 +77,14 @@ function install_button( parent )
     var work = document.getElementById('work-toggle');
 
     var toggleDiv = document.createElement('span');
+    // The checkbox that makes the thing work
     var inp = document.createElement('input');
     inp.setAttribute('id', 'shc-no-detail');
     inp.setAttribute('type', 'checkbox');
     inp.setAttribute('title', 'No Detail View');
     toggleDiv.appendChild( inp );
-    
+    // Label for checkbox
+    // Debug button
     prnt.insertBefore( toggleDiv, plan );
     document.getElementById('shc-no-detail').addEventListener( 'click', no_detail_click);
     no_detail_click();
