@@ -1,11 +1,12 @@
 // ==UserScript==
 // @name         JIRA Hide Detail No jQuery
 // @namespace    https://github.com/sweavo/jiraMonkey
-// @version      0.3
+// @version      0.4
 // @description  Further to https://jira.atlassian.com/browse/GHS-11160 install a checkbox to keep detail view hidden
 // @author       sweavo@gmail.com
 // @include      /^https?:\/\/[^/]*\/secure\/RapidBoard.jspa\?rapidView/
 // @grant        none
+// @run-at       document-end
 // ==/UserScript==
 // Notes: this script is probably only compatible with Chrome, the only browser I've tried it in.
 //
@@ -70,13 +71,13 @@ function set_no_detail_on_row_or_card_click()
     }
 }
 
-function install_button( parent )
+function install_button( )
 { 
     var prnt = document.getElementById('ghx-modes');
     var plan = document.getElementById('plan-toggle');
     var work = document.getElementById('work-toggle');
-
     var toggleDiv = document.createElement('span');
+
     // The checkbox that makes the thing work
     var inp = document.createElement('input');
     inp.setAttribute('id', 'shc-no-detail');
@@ -84,7 +85,6 @@ function install_button( parent )
     inp.setAttribute('title', 'No Detail View');
     toggleDiv.appendChild( inp );
     // Label for checkbox
-    // Debug button
     prnt.insertBefore( toggleDiv, plan );
     document.getElementById('shc-no-detail').addEventListener( 'click', no_detail_click);
     no_detail_click();
@@ -94,6 +94,5 @@ function install_button( parent )
     work.addEventListener('click', rowcard_click);
 }
 
-document.addEventListener('load',  install_button);
-
+document.addEventListener( "DOMContentLoaded", install_button, false )
 
