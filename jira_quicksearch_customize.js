@@ -2,12 +2,13 @@
 // @name         JIRA Quicksearch plus
 // @namespace    https://github.com/sweavo/jiraMonkey
 // @version      1.0
-// @description  Quicksearch to use current project and unresolved only.
+// @description  Quicksearch to use current project and unresolved only. Inspired by https://jira.atlassian.com/browse/JRA-15306
 // @author       sweavo@gmail.com
 // @include      /^https?:\/\/HOSTNAME:8080/
 // @grant        none
 // @run-at       document-end
 // ==/UserScript==
+//
 // To install:
 //    open tamperMonkey dashboard,
 //    create a new script,
