@@ -8,14 +8,14 @@
 // @grant        none
 // @run-at       document-end
 // ==/UserScript==
-// To install: 
-//    open tamperMonkey dashboard, 
-//    create a new script, 
+// To install:
+//    open tamperMonkey dashboard,
+//    create a new script,
 //    paste this whole file over the whole edit buffer
 //    edit HOSTNAME above to the hostname of your JIRA server
 //    update the port 8080 if necessary
 //    set your project name below.
-const PROJECT_NAME="UPDATEME";
+var PROJECT_NAME="UPDATEME";
 
 function dress_qs_as_jql( qs )
 {
