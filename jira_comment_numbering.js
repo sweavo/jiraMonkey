@@ -1,20 +1,36 @@
-// ==UserScript==
-// @name         JIRA comment numbering
-// @namespace    http://tampermonkey.net/
-// @version      0.1
-// @description  Periodically (because I had trouble with addEventListener on the show-more-comments element) insert # numbers into comments.
-// @author       sweavo@gmail.com
-// @include      YOUR JIRA SERVER HERE
-// @grant        none
-// ==/UserScript==
+/* Jira Comment Numbering
+ *
+ * Inserts human-readable #1, #2, etc at the top of each comment.
+ * Then other humans can type stuff like "I agree with comment #3" 
+ *
+ * Put this in the announcement banner on your jira instance.
+ * It's a bit pointless to have this as a tampermonkey script, as
+ * you want to be able to use the numbers when communicating with
+ * your colleagues, and tampermonkey will only put it in your
+ * browser.
+ *
+ * TODO: Trigger the re-run of number_comments on expansion of 
+ *       show-more-comments, rather than doing it every 2 seconds
+ *       regardless.
+ * TODO: Allow #3 type notation within comments that will jump to
+ *       the anchor of the referenced comment.
+ * 
+ */ 
+<script type="text/javascript">
+"use strict";
 
+/* Whether to log stuff to console to show it working */
 JCN_LOG_TO_CONSOLE=false;
 
+/* Insert child as the first child nodes of container. */
 function prepend( container, child )
 {
     container.insertBefore(child, container.childNodes[0]);
 }
 
+/* In a jira comments block, we start counting at 1 unless the "show more comments"
+ * div is visible. In that case, we start at the number of hidden comments + 1 
+ */
 function get_start_point( activity_comment )
 {
     var show_more =activity_comment.getElementsByClassName ('show-more-comments' );
@@ -31,6 +47,7 @@ function get_start_point( activity_comment )
     }
 }
 
+/* true if and only if node is a textnode whose contents match text */
 function isTextNodeMatching( node, text )
 {
     if ( node.nodeType != 3 )
@@ -42,6 +59,7 @@ function isTextNodeMatching( node, text )
     return ( node.textContent == text ) ;
 }
 
+/* insert numbers to the start of the headers of comments on the browse page */
 function number_comments( )
 {
     if ( JCN_LOG_TO_CONSOLE ) console.log('number_comments start');
@@ -62,14 +80,16 @@ function number_comments( )
     if ( JCN_LOG_TO_CONSOLE ) console.log('number_comments done');
 }
 
-function schedule_numbering( )
+/* insert numbers and set an interval to repeat it. This is because triggering
+ * number_comments on the click event of show-more-comments didn't always work.
+ */
+function number_comments_persistently( ) 
 {
-    if ( JCN_LOG_TO_CONSOLE ) console.log('scheduling number_comments');
-    setTimeout( number_comments, 1000 );
+  setInterval( number_comments, 2000 );
+  number_comments();
 }
-(function() {
-    'use strict';
 
-    // Your code here...
-    setInterval( number_comments, 2000 );
-})();
+/* once the DOM is loaded, start the modifications. */
+document.addEventListener( "DOMContentLoaded", number_comments_persistently, false);
+
+</script>
