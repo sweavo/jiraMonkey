@@ -31,14 +31,14 @@ function prepend( container, child )
 /* In a jira comments block, we start counting at 1 unless the "show more comments"
  * div is visible. In that case, we start at the number of hidden comments + 1 
  */
-function get_start_point( activity_comment )
+function get_start_point( issue_actions_container )
 {
-    if ( ! activity_comment )
+    if ( ! issue_actions_container )
     {
-        alert( 'activity_comment was null' );
+        if ( JCN_LOG_TO_CONSOLE ) console.log( "issue_actions_container was null" );
         return 1;
     }
-    var show_more =activity_comment.getElementsByClassName( 'show-more-comments' );
+    var show_more =issue_actions_container.getElementsByClassName( 'show-more-comments' );
     if ( show_more.length === 0 )
     {
         return 1;
@@ -70,12 +70,18 @@ function number_comments( )
     if ( JCN_LOG_TO_CONSOLE ) console.log( 'number_comments start' );
     if ( ! document )
     {
-        alert( 'document was null' );
+        if ( JCN_LOG_TO_CONSOLE ) console.log( "document was null" );
         return;
     }
     var comments = document.getElementsByClassName( 'activity-comment' );
     var i;
-    var offset = get_start_point( document.getElementById( 'issue_actions_container' ) );
+    var issue_actions_container = document.getElementById( 'issue_actions_container' )
+    if ( ! issue_actions_container )
+    {
+        /* This doesn't look like an issue view; bail out. */
+        return;
+    }
+    var offset = get_start_point( issue_actions_container );
     for ( i = 0; i < comments.length; i++ ) {
         if ( ! comments[i] )
         {
