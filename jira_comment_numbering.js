@@ -25,7 +25,7 @@ JCN_LOG_TO_CONSOLE=false;
 /* Insert child as the first child nodes of container. */
 function prepend( container, child )
 {
-    container.insertBefore(child, container.childNodes[0]);
+    container.insertBefore( child, container.childNodes[0] );
 }
 
 /* In a jira comments block, we start counting at 1 unless the "show more comments"
@@ -33,15 +33,20 @@ function prepend( container, child )
  */
 function get_start_point( activity_comment )
 {
-    var show_more =activity_comment.getElementsByClassName ('show-more-comments' );
+    if ( ! activity_comment )
+    {
+        alert( 'activity_comment was null' );
+        return 1;
+    }
+    var show_more =activity_comment.getElementsByClassName( 'show-more-comments' );
     if ( show_more.length === 0 )
     {
         return 1;
     }
     else
     {
-        if ( JCN_LOG_TO_CONSOLE ) console.log('show-more found');
-        var number = show_more[0].getAttribute('data-collapsed-count');
+        if ( JCN_LOG_TO_CONSOLE ) console.log( 'show-more found' );
+        var number = show_more[0].getAttribute( 'data-collapsed-count' );
         if ( JCN_LOG_TO_CONSOLE ) console.log( number );
         return 1 + parseInt( number );
     }
@@ -62,22 +67,32 @@ function isTextNodeMatching( node, text )
 /* insert numbers to the start of the headers of comments on the browse page */
 function number_comments( )
 {
-    if ( JCN_LOG_TO_CONSOLE ) console.log('number_comments start');
+    if ( JCN_LOG_TO_CONSOLE ) console.log( 'number_comments start' );
+    if ( ! document )
+    {
+        alert( 'document was null' );
+        return;
+    }
     var comments = document.getElementsByClassName( 'activity-comment' );
     var i;
-    var offset = get_start_point( document.getElementById( 'issue_actions_container'  ));
-    for (i = 0; i < comments.length; i++) {
+    var offset = get_start_point( document.getElementById( 'issue_actions_container' ) );
+    for ( i = 0; i < comments.length; i++ ) {
+        if ( ! comments[i] )
+        {
+            alert( 'comments[i] was null' );
+            continue;
+        }
         var deets = comments[i].getElementsByClassName( 'action-details' );
         if ( JCN_LOG_TO_CONSOLE ) console.log( deets );
         var numberText =  "#" + ( i + offset );
         var firstChild =  deets[0].childNodes[0];
-        if ( ! isTextNodeMatching( firstChild, numberText) )
+        if ( ! isTextNodeMatching( firstChild, numberText ) )
         {
             var newText = document.createTextNode( numberText );
             prepend( deets[0], newText );
         }
     }
-    if ( JCN_LOG_TO_CONSOLE ) console.log('number_comments done');
+    if ( JCN_LOG_TO_CONSOLE ) console.log( 'number_comments done' );
 }
 
 /* insert numbers and set an interval to repeat it. This is because triggering
@@ -86,10 +101,10 @@ function number_comments( )
 function number_comments_persistently( ) 
 {
   setInterval( number_comments, 2000 );
-  number_comments();
+  number_comments( );
 }
 
 /* once the DOM is loaded, start the modifications. */
-document.addEventListener( "DOMContentLoaded", number_comments_persistently, false);
+document.addEventListener( "DOMContentLoaded", number_comments_persistently, false );
 
 </script>
