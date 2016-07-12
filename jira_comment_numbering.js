@@ -20,7 +20,7 @@
 "use strict";
 
 /* Whether to log stuff to console to show it working */
-JCN_LOG_TO_CONSOLE=false;
+const JCN_LOG_TO_CONSOLE=false;
 
 /* Insert child as the first child nodes of container. */
 function prepend( container, child )
