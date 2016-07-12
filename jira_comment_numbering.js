@@ -3,23 +3,21 @@
  *
  * See https://github.com/sweavo/jiraMonkey/blob/master/jira_comment_numbering.js
  *
- * Inserts human-readable #1, #2, etc at the top of each comment.
- * Then other humans can type stuff like "I agree with comment #3" 
+ * Inserts human-readable #1, #2, etc at the top of each comment.  Then other 
+ * humans can type stuff like "I agree with comment #3" 
  *
- * Put this in the announcement banner on your jira instance.
- * It's a bit pointless to have this as a tampermonkey script, as
- * you want to be able to use the numbers when communicating with
- * your colleagues, and tampermonkey will only put it in your
- * browser.
+ * Put this in the announcement banner on your jira instance. (It is pointless 
+ * to have this as a tampermonkey script, as you want to be able to use the 
+ * numbers when communicating with your colleagues, and tampermonkey will only 
+ * put it in your browser.)
  *
  * TODO: Trigger the re-run of number_comments on expansion of 
- *       show-more-comments, rather than doing it every 2 seconds
- *       regardless.
- * TODO: Allow #3 type notation within comments that will jump to
- *       the anchor of the referenced comment.
- * 
+ *       show-more-comments, rather than doing it every 2 seconds regardless.
+ * TODO: Allow #3 type notation within comments that will jump to the anchor 
+ *       of the referenced comment.
  */ 
-"use strict";
+
+"use strict"; /* Like all programming languages ought to do, always */
 
 /* Whether to log stuff to console to show it working */
 const JCN_LOG_TO_CONSOLE=false;
@@ -30,8 +28,9 @@ function prepend( container, child )
     container.insertBefore( child, container.childNodes[0] );
 }
 
-/* In a jira comments block, we start counting at 1 unless the "show more comments"
- * div is visible. In that case, we start at the number of hidden comments + 1 
+/* In a jira comments block, we start counting at 1 unless the "show more 
+ * comments" div is visible. In that case, we start at the number of hidden 
+ * comments + 1 
  */
 function get_start_point( issue_actions_container )
 {
@@ -104,7 +103,7 @@ function number_comments( )
 }
 
 /* insert numbers and set an interval to repeat it. This is because triggering
- * number_comments on the click event of show-more-comments didn't always work.
+ * number_comments on the click event of show-more-comments did not always work.
  */
 function number_comments_persistently( ) 
 {
@@ -113,6 +112,8 @@ function number_comments_persistently( )
 }
 
 /* once the DOM is loaded, start the modifications. */
-document.addEventListener( "DOMContentLoaded", number_comments_persistently, false );
+document.addEventListener( "DOMContentLoaded", 
+                           number_comments_persistently, 
+                           false );
 
 </script>
