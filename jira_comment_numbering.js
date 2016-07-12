@@ -1,6 +1,8 @@
 <script type="text/javascript">
 /* Jira Comment Numbering
  *
+ * See https://github.com/sweavo/jiraMonkey/blob/master/jira_comment_numbering.js
+ *
  * Inserts human-readable #1, #2, etc at the top of each comment.
  * Then other humans can type stuff like "I agree with comment #3" 
  *
