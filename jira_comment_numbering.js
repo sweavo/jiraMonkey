@@ -1,3 +1,4 @@
+<script type="text/javascript">
 /* Jira Comment Numbering
  *
  * Inserts human-readable #1, #2, etc at the top of each comment.
@@ -16,7 +17,6 @@
  *       the anchor of the referenced comment.
  * 
  */ 
-<script type="text/javascript">
 "use strict";
 
 /* Whether to log stuff to console to show it working */
