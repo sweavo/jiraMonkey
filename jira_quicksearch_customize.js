@@ -20,9 +20,17 @@ var PROJECT_NAME="UPDATEME";
 
 function dress_qs_as_jql( qs )
 {
-    return 'text ~ "' + qs + '"' +
-        ' and resolution is EMPTY' +
-        ' and project="' + PROJECT_NAME + '"';
+    RE_INT= /^\d+$/;
+    if ( RE_INT.test( qs ) ) 
+    {
+    	return 'issueID = ' + qs + ' and project="' + PROJECT_NAME + '"';
+    }
+    else
+    {
+	return 'text ~ "' + qs + '"' +
+	    ' and resolution is EMPTY' +
+	    ' and project="' + PROJECT_NAME + '"';
+    }
 }
 
 // TamperMonkey executes this script on DOMContentLoaded
