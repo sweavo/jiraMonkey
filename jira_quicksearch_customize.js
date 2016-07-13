@@ -18,28 +18,34 @@
 //    set your project name below.
 var PROJECT_NAME="UPDATEME";
 
-function dress_qs_as_jql( qs )
-{
-    RE_INT= /^\d+$/;
-    if ( RE_INT.test( qs ) ) 
-    {
-    	return 'issueID = ' + qs + ' and project="' + PROJECT_NAME + '"';
-    }
-    else
-    {
-	return 'text ~ "' + qs + '"' +
-	    ' and resolution is EMPTY' +
-	    ' and project="' + PROJECT_NAME + '"';
-    }
-}
-
 // TamperMonkey executes this script on DOMContentLoaded
 var quicksearch = document.getElementById("quicksearch");
 var qsInput = document.getElementById("quickSearchInput");
 
+function dress_qs_as_jql( qs )
+{
+    return 'text ~ "' + qs + '"' +
+	      ' and resolution is EMPTY' +
+	      ' and project="' + PROJECT_NAME + '"';
+}
+
+function jm_submit_quicksearch( )
+{
+    RE_INT= /^\d+$/;
+    // If numeric, don't futz with the field
+    if ( RE_INT.test( qsInput.value ) )
+    {
+    	return;
+    }
+
+    // Else we will restrict the project and resolution
+    qsInput.value = dress_qs_as_jql( qsInput.value );
+    qsInput.name="jql"; // No longer submitting quickSearch, but advanced
+}
+
+
 // Override the search box behavior and mouseover hint
-quicksearch.addEventListener("submit",function(){ qsInput.value = dress_qs_as_jql( qsInput.value ); });
-qsInput.name="jql"; // No longer submitting quickSearch, but advanced
+quicksearch.addEventListener( "submit", jm_submit_quicksearch );
 
 // Advertise that we've overridden the behavior
 qsInput.placeholder="S.U.I.P.";
