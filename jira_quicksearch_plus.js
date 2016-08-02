@@ -15,10 +15,19 @@
 //    paste this whole file over the whole edit buffer
 //    edit HOSTNAME above to the hostname of your JIRA server
 //    update the port 8080 if necessary
+// Put your default project in DEFAULT_PROJECT below.
+var DEFAULT_PROJECT = "DEFAULT";
 
 // TamperMonkey executes this script on DOMContentLoaded
-var PROJECT_NAME=document.getElementsByName('ghx-project-key')[0].content;
-console.log( "Quicksearch Plus: Project is '" + PROJECT_NAME + "'");
+function get_meta_data( key, default_value )
+{
+    // retrieve value from <meta name="{key}" content="{value}">
+    var meta_element = document.getElementsByName(key)[0];
+    return meta_element ? meta_element.content : default_value;
+}
+
+var PROJECT_NAME = get_meta_data( 'ghx-project-key', DEFAULT_PROJECT );
+console.log( "Quicksearch Plus: Project is '" + PROJECT_NAME + "'" );
 
 var quicksearch = document.getElementById("quicksearch");
 var qsInput = document.getElementById("quickSearchInput");
