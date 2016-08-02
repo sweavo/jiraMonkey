@@ -15,10 +15,11 @@
 //    paste this whole file over the whole edit buffer
 //    edit HOSTNAME above to the hostname of your JIRA server
 //    update the port 8080 if necessary
-//    set your project name below.
-var PROJECT_NAME="UPDATEME";
 
 // TamperMonkey executes this script on DOMContentLoaded
+var PROJECT_NAME=document.getElementsByName('ghx-project-key')[0].content;
+console.log( "Quicksearch Plus: Project is '" + PROJECT_NAME + "'");
+
 var quicksearch = document.getElementById("quicksearch");
 var qsInput = document.getElementById("quickSearchInput");
 
