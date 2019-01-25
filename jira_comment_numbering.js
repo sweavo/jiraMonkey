@@ -37,7 +37,7 @@ function get_start_point( issue_actions_container )
 {
     if ( ! issue_actions_container )
     {
-        if ( JCN_LOG_TO_CONSOLE ) console.log( "issue_actions_container was null" );
+        if ( JCN_LOG_TO_CONSOLE ) console.log( "JCN: issue_actions_container was null" );
         return 1;
     }
     var show_more =issue_actions_container.getElementsByClassName( 'show-more-comments' );
@@ -47,9 +47,9 @@ function get_start_point( issue_actions_container )
     }
     else
     {
-        if ( JCN_LOG_TO_CONSOLE ) console.log( 'show-more found' );
+        if ( JCN_LOG_TO_CONSOLE ) console.log( 'JCN: show-more found' );
         var number = show_more[0].getAttribute( 'data-collapsed-count' );
-        if ( JCN_LOG_TO_CONSOLE ) console.log( number );
+        if ( JCN_LOG_TO_CONSOLE ) console.log( "JCN: " + number );
         return 1 + parseInt( number );
     }
 }
@@ -61,18 +61,18 @@ function isTextNodeMatching( node, text )
     {
         return false;
     }
-    if ( JCN_LOG_TO_CONSOLE ) console.log( "existing: " + node.textContent );
-    if ( JCN_LOG_TO_CONSOLE ) console.log( "new: " + text );
+    if ( JCN_LOG_TO_CONSOLE ) console.log( "JCN: existing: " + node.textContent );
+    if ( JCN_LOG_TO_CONSOLE ) console.log( "JCN: new: " + text );
     return ( node.textContent == text ) ;
 }
 
 /* insert numbers to the start of the headers of comments on the browse page */
 function number_comments( )
 {
-    if ( JCN_LOG_TO_CONSOLE ) console.log( 'number_comments start' );
+    if ( JCN_LOG_TO_CONSOLE ) console.log( 'JCN: number_comments start' );
     if ( ! document )
     {
-        if ( JCN_LOG_TO_CONSOLE ) console.log( "document was null" );
+        if ( JCN_LOG_TO_CONSOLE ) console.log( "JCN: document was null" );
         return;
     }
     var comments = document.getElementsByClassName( 'activity-comment' );
@@ -91,7 +91,7 @@ function number_comments( )
             continue;
         }
         var deets = comments[i].getElementsByClassName( 'action-details' );
-        if ( JCN_LOG_TO_CONSOLE ) console.log( deets );
+        if ( JCN_LOG_TO_CONSOLE ) console.log( "JCN: " + deets );
         var numberText =  "#" + ( i + offset );
         var firstChild =  deets[0].childNodes[0];
         if ( ! isTextNodeMatching( firstChild, numberText ) )
@@ -100,7 +100,7 @@ function number_comments( )
             prepend( deets[0], newText );
         }
     }
-    if ( JCN_LOG_TO_CONSOLE ) console.log( 'number_comments done' );
+    if ( JCN_LOG_TO_CONSOLE ) console.log( 'JCN: number_comments done' );
 }
 
 /* insert numbers and set an interval to repeat it. This is because triggering
