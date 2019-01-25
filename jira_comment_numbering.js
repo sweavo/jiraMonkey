@@ -31,7 +31,7 @@ function prepend( container, child )
 }
 
 /* In a jira comments block, we start counting at 1 unless the "show more comments"
- * div is visible. In that case, we start at the number of hidden comments + 1 
+ * div is visible. In that case, we start at the number of hidden comments + 1
  */
 function get_start_point( issue_actions_container )
 {
@@ -84,6 +84,7 @@ function number_comments( )
         return;
     }
     var offset = get_start_point( issue_actions_container );
+
     for ( i = 0; i < comments.length; i++ ) {
         if ( ! comments[i] )
         {
@@ -106,13 +107,16 @@ function number_comments( )
 /* insert numbers and set an interval to repeat it. This is because triggering
  * number_comments on the click event of show-more-comments didn't always work.
  */
-function number_comments_persistently( ) 
+function number_comments_persistently( )
 {
-  setInterval( number_comments, 2000 );
-  number_comments( );
+    setInterval( number_comments, 2000 );
+    number_comments( );
 }
 
+// for non-tampermonkey bootstrapping
 /* once the DOM is loaded, start the modifications. */
 document.addEventListener( "DOMContentLoaded", number_comments_persistently, false );
+// for tampermonkey bootstrapping:
+//number_comments_persistently();
 
 </script>
