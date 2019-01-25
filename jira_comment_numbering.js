@@ -4,7 +4,7 @@
  * See https://github.com/sweavo/jiraMonkey/blob/master/jira_comment_numbering.js
  *
  * Inserts human-readable #1, #2, etc at the top of each comment.
- * Then other humans can type stuff like "I agree with comment #3" 
+ * Then other humans can type stuff like "I agree with comment #3"
  *
  * Put this in the announcement banner on your jira instance.
  * It's a bit pointless to have this as a tampermonkey script, as
@@ -12,13 +12,13 @@
  * your colleagues, and tampermonkey will only put it in your
  * browser.
  *
- * TODO: Trigger the re-run of number_comments on expansion of 
+ * TODO: Trigger the re-run of number_comments on expansion of
  *       show-more-comments, rather than doing it every 2 seconds
  *       regardless.
  * TODO: Allow #3 type notation within comments that will jump to
  *       the anchor of the referenced comment.
- * 
- */ 
+ *
+ */
 "use strict";
 
 /* Whether to log stuff to console to show it working */
