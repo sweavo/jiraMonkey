@@ -1,4 +1,4 @@
-==UserScript==
+// ==UserScript==
 // @name         JIRA Remove Detail View No jQuery for JIRA Software 7.1.8
 // @namespace    http://tampermonkey.net/
 // @version      7.1.8
